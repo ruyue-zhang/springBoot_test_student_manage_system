@@ -9,8 +9,8 @@ import java.util.Map;
 public class StudentManagement {
     Map<String,Student> studentMap = new LinkedHashMap<>();
 
-    @PostMapping("/add")
-    public String post(@RequestBody Student student) {
+    @PostMapping("/addStudent")
+    public String addStudent(@RequestBody Student student) {
         if(studentMap.containsKey(student.getName())) {
             return new String("姓名重复");
         } else {
@@ -19,5 +19,6 @@ public class StudentManagement {
         }
     }
 
-    
+
+
 }
