@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,5 +32,15 @@ public class StudentManagement {
     @GetMapping("/query")
     public Student queryByName(@RequestParam(name = "name") String name) {
         return studentMap.get(name);
+    }
+
+    @DeleteMapping("/delete")
+    public String deleteByName(@RequestParam(name = "name") String name) {
+        if(studentMap.containsKey(name)) {
+            studentMap.remove(name);
+            return new String("删除成功");
+        } else {
+            return new String("该学生不存在");
+        }
     }
 }
